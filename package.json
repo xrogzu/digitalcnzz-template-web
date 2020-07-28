@@ -1,9 +1,9 @@
 {
     "private": true,
     "scripts": {
-        "serve": "vue-cli-service serve",
-        "build-dev": "vue-cli-service build --mode development --dest dist-dev",
-        "build": "vue-cli-service build",
+        "dev": "vue-cli-service serve",
+        "build:dev": "vue-cli-service build --mode development --dest dist-dev",
+        "build:prod": "vue-cli-service build",
         "lint": "vue-cli-service lint",
         "stylelint": "vue-cli-service lint:style",
         "svgo": "svgo -f src/assets/icons",
