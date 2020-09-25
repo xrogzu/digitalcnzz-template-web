@@ -86,18 +86,18 @@ module.exports = {
   },
   chainWebpack: config => {
     const oneOfsMap = config.module.rule('scss').oneOfs.store
-    if (IS_PROD && process.env.WEBPACK_ALIOSS_PLUGIN_ACCESS_KEY_ID) {
-      config.plugin('alioss').use(AliOSSPlugin, [
-        {
-          ossBaseDir: '/digitalcnzz/pretest/',
-          project: 'digitalcnzz-xxxx-web', // 发布前把xxxx换成当前项目的名称
-          retry: 0,
-          gzip: true,
-          exclude: /.*\.$/,
-          removeMode: false
-        }
-      ])
-    }
+    // if (IS_PROD && process.env.WEBPACK_ALIOSS_PLUGIN_ACCESS_KEY_ID) {
+    //   config.plugin('alioss').use(AliOSSPlugin, [
+    //     {
+    //       ossBaseDir: '/digitalcnzz/pretest/',
+    //       project: 'digitalcnzz-xxxx-web', // 发布前把xxxx换成当前项目的名称
+    //       retry: 0,
+    //       gzip: true,
+    //       exclude: /.*\.$/,
+    //       removeMode: false
+    //     }
+    //   ])
+    // }
     oneOfsMap.forEach(item => {
       item.use('sass-resources-loader')
         .loader('sass-resources-loader')

@@ -1,6 +1,6 @@
 # digitalzz-webFront-web
 
-前端项目 Web 端模板
+数字郑州前端项目 Vue-web 端模板
 
 # 安装依赖环境
 
