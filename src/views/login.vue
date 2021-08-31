@@ -9,7 +9,7 @@
             <div class="flex-container">
                 <swiper :options="swiperOption" class="banner">
                     <swiper-slide v-for="(item, index) in banner" :key="index">
-                        <img class="item" :src="item" />
+                        <img class="item" :src="item">
                     </swiper-slide>
                 </swiper>
             </div>
@@ -66,8 +66,9 @@
                     type="primary"
                     style="width: 100%;"
                     @click.native.prevent="handleLogin"
-                    >登录</el-button
                 >
+                    登录
+                </el-button>
                 <div
                     style="margin-top: 20px; color: #999; font-size: 14px; text-align: center;"
                 >
@@ -80,11 +81,11 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import "swiper/css/swiper.css";
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
 
 export default {
-    name: "Login",
+    name: 'Login',
     components: {
         Swiper,
         SwiperSlide
@@ -99,7 +100,7 @@ export default {
                     disableOnInteraction: false
                 },
                 loop: true,
-                effect: "fade"
+                effect: 'fade'
             },
             swiperOption: {
                 init: true,
@@ -110,38 +111,38 @@ export default {
                 loop: true
             },
             banner: [
-                "https://i.loli.net/2020/04/21/B2ThI5N6UZlxMwr.png",
-                "https://i.loli.net/2020/04/21/A1cvYsQeXfTDoJx.png",
-                "https://i.loli.net/2020/04/21/5URp2Ge6YVEcfS1.png"
+                'https://i.loli.net/2020/04/21/B2ThI5N6UZlxMwr.png',
+                'https://i.loli.net/2020/04/21/A1cvYsQeXfTDoJx.png',
+                'https://i.loli.net/2020/04/21/5URp2Ge6YVEcfS1.png'
             ],
             form: {
-                account: localStorage.login_account || "",
-                password: "",
+                account: localStorage.login_account || '',
+                password: '',
                 remember: !!localStorage.login_account
             },
             rules: {
                 account: [
-                    { required: true, trigger: "blur", message: "请输入用户名" }
+                    { required: true, trigger: 'blur', message: '请输入用户名' }
                 ],
                 password: [
-                    { required: true, trigger: "blur", message: "请输入密码" },
+                    { required: true, trigger: 'blur', message: '请输入密码' },
                     {
                         min: 6,
                         max: 18,
-                        trigger: "blur",
-                        message: "密码长度为6到18位"
+                        trigger: 'blur',
+                        message: '密码长度为6到18位'
                     }
                 ]
             },
             loading: false,
-            passwordType: "password",
+            passwordType: 'password',
             redirect: undefined
-        };
+        }
     },
     watch: {
         $route: {
             handler: function(route) {
-                this.redirect = route.query && route.query.redirect;
+                this.redirect = route.query && route.query.redirect
             },
             immediate: true
         }
@@ -149,34 +150,34 @@ export default {
     methods: {
         showPassword() {
             this.passwordType =
-                this.passwordType === "password" ? "" : "password";
+                this.passwordType === 'password' ? '' : 'password'
             this.$nextTick(() => {
-                this.$refs.password.focus();
-            });
+                this.$refs.password.focus()
+            })
         },
         handleLogin() {
             this.$refs.form.validate(valid => {
                 if (valid) {
-                    this.loading = true;
+                    this.loading = true
                     this.$store
-                        .dispatch("token/login", this.form)
+                        .dispatch('token/login', this.form)
                         .then(() => {
-                            this.loading = false;
+                            this.loading = false
                             this.form.remember &&
                                 localStorage.setItem(
-                                    "login_account",
+                                    'login_account',
                                     this.form.account
-                                );
-                            this.$router.push({ path: this.redirect || "/" });
+                                )
+                            this.$router.push({ path: this.redirect || '/' })
                         })
                         .catch(() => {
-                            this.loading = false;
-                        });
+                            this.loading = false
+                        })
                 }
-            });
+            })
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>

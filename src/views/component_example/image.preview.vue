@@ -1,8 +1,8 @@
 <template>
     <div>
         <page-main>
-            <image-preview src="https://s1.ax1x.com/2020/07/03/NOeqld.jpg" :width="200" />
-            <image-preview src="http://image.lookbi.com/four_season/uploads/supply//1/20200623/1592845429844750.png" :width="200" :height="150" />
+            <image-preview src="https://cdn.digitalcnzz.com/2021/06/01/aadd6d581bf5452a99038267224ac533cloud.jpeg" :width="200" />
+            <image-preview src="https://cdn.digitalcnzz.com/2021/06/01/aadd6d581bf5452a99038267224ac533cloud.jpeg" :width="200" :height="150" />
             <el-divider content-position="left">加载失败</el-divider>
             <image-preview src="" width="100px" height="100px" />
         </page-main>

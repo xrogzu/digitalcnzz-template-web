@@ -45,7 +45,7 @@
                         <el-col :span="8">
                             <image-upload
                                 :url.sync="form.headimg"
-                                action="http://scrm.1daas.com/api/upload/upload"
+                                action="http://cdn.digitalcnzz.com/api/upload/upload"
                                 name="image"
                                 :data="{ token: 'TKD628431923530324' }"
                                 notip
@@ -64,9 +64,9 @@
                                 <div class="desc">当前密码强度：强</div>
                             </div>
                             <div class="action">
-                                <el-button type="text" @click="editPassword"
-                                    >修改</el-button
-                                >
+                                <el-button type="text" @click="editPassword">
+                                    修改
+                                </el-button>
                             </div>
                         </div>
                         <div class="item">
@@ -96,42 +96,42 @@
 
 <script>
 export default {
-    name: "PersonalSetting",
+    name: 'PersonalSetting',
     props: {},
     data() {
         return {
             form: {
-                headimg: "",
-                mobile: "",
-                name: "",
-                qq: "",
-                wechat: ""
+                headimg: '',
+                mobile: '',
+                name: '',
+                qq: '',
+                wechat: ''
             }
-        };
+        }
     },
     created() {},
     mounted() {},
     methods: {
         handleSuccess(res) {
-            if (res.error == "") {
-                this.form.headimg = res.data.path;
+            if (res.error == '') {
+                this.form.headimg = res.data.path
             } else {
-                this.$message.warning(res.error);
+                this.$message.warning(res.error)
             }
         },
         editPassword() {
             this.$router.push({
-                name: "personalEditPassword"
-            });
+                name: 'personalEditPassword'
+            })
         }
     },
     beforeRouteLeave(to, from, next) {
-        if (["personalEditPassword"].includes(to.name)) {
-            this.$store.commit("keepAlive/add", "PersonalSetting");
+        if (['personalEditPassword'].includes(to.name)) {
+            this.$store.commit('keepAlive/add', 'PersonalSetting')
         }
-        next();
+        next()
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>

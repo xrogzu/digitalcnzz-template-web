@@ -57,12 +57,21 @@ const cdn = {
 module.exports = {
   publicPath: '',
   productionSourceMap: false,
+  devServer: {
+    port: 9020,
+    open: false,
+    overlay: {
+      warnings: true,
+      errors: false
+    }
+  },
   configureWebpack: config => {
     config.resolve.modules = ['node_modules', 'assets/sprites']
     config.plugins.push(...spritesmithTasks)
     if (isCDN) {
       config.externals = externals
     }
+
     config.optimization = {
       minimizer: [
         new terserPlugin({
@@ -81,10 +90,11 @@ module.exports = {
   pluginOptions: {
     lintStyleOnBuild: true,
     stylelint: {
-      fix: true
+      fix: true,
     }
   },
   chainWebpack: config => {
+    // config.plugin('stylelint').use('stylelint-webpack-plugin')
     const oneOfsMap = config.module.rule('scss').oneOfs.store
     // if (IS_PROD && process.env.WEBPACK_ALIOSS_PLUGIN_ACCESS_KEY_ID) {
     //   config.plugin('alioss').use(AliOSSPlugin, [

@@ -39,7 +39,7 @@ import '@/assets/styles/reset.scss'
 Vue.config.productionTip = false
 
 Vue.prototype.$eventBus = new Vue({
-    router,
-    store,
-    render: h => h(App)
+  router,
+  store,
+  render: h => h(App)
 }).$mount('#app')
